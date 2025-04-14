@@ -1,10 +1,12 @@
 #!/bin/bash
 
-echo "➜ Install Composer Dependencies"
+echo "Install Composer Dependencies"
 cd server && composer install && cd ..
 
-echo "➜ Install NPM Dependencies"
+echo "Install NPM Dependencies"
 cd client && npm install && cd ..
 
-echo "➜ Listen To Incoming Requests"
+echo "Listen To Incoming Requests"
 php-fpm
+
+echo "Starting NGINX"
