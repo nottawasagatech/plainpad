@@ -7,6 +7,7 @@ RUN apt-get update \
         git \
         zip \
         unzip \
+        nginx \    
     && curl -sSL https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions -o - | sh -s \
         curl gd intl ldap mbstring mysqli odbc pdo pdo_mysql soap sockets xml zip xdebug exif sqlite3 gettext bcmath csv event imap inotify mcrypt redis \
     && docker-php-ext-enable xdebug \
@@ -24,6 +25,8 @@ RUN apt-get update \
     && echo "export PHP_IDE_CONFIG=\"serverName=host.docker.internal\"" >> /root/.bashrc \
     && apt-get -y autoremove \
     && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+    && curl https://raw.githubusercontent.com/alextselegidis/plainpad/refs/heads/main/docker/php-fpm/php-ini-overrides.ini -o /usr/local/etc/php/conf.d/99-overrides.ini \
+    && curl https://raw.githubusercontent.com/alextselegidis/plainpad/refs/heads/main/docker/nginx/nginx.conf -o /etc/nginx/conf.d/default.conf
 
 CMD ["bash", "docker/php-fpm/start-container"]
