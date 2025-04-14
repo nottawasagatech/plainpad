@@ -27,6 +27,6 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     && curl https://raw.githubusercontent.com/alextselegidis/plainpad/refs/heads/main/docker/php-fpm/php-ini-overrides.ini -o /usr/local/etc/php/conf.d/99-overrides.ini \
-    && curl https://raw.githubusercontent.com/alextselegidis/plainpad/refs/heads/main/docker/nginx/nginx.conf -o /etc/nginx/conf.d/default.conf
+    && curl https://github.com/nottawasagatech/plainpad/blob/main/docker/nginx/nginx.conf -o /etc/nginx/conf.d/default.conf
 
 CMD ["bash", "docker/php-fpm/start-container"]
