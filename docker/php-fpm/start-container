@@ -7,7 +7,7 @@ echo "Install NPM Dependencies"
 cd client && npm install && cd ..
 
 echo "Listen To Incoming Requests"
-php-fpm
+php-fpm &
 
 echo "Starting NGINX"
 nginx
