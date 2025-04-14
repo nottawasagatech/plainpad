@@ -6,8 +6,9 @@ cd server && composer install && cd ..
 echo "Install NPM Dependencies"
 cd client && npm install && cd ..
 
-echo "Listen To Incoming Requests"
-php-fpm &
-
 echo "Starting NGINX"
 nginx
+
+echo "Listen To Incoming Requests"
+php-fpm
+
