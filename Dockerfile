@@ -27,8 +27,7 @@ RUN apt-get update \
     && apt-get -y autoremove \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
-    && git clone https://github.com/nottawasagatech/plainpad.git \
-    && cd plainpad/server \
+    && cd server \
     && composer install \
     && cd .. \
     && cd client \
@@ -37,4 +36,4 @@ RUN apt-get update \
     && curl https://raw.githubusercontent.com/alextselegidis/plainpad/refs/heads/main/docker/php-fpm/php-ini-overrides.ini -o /usr/local/etc/php/conf.d/99-overrides.ini \
     && curl https://github.com/nottawasagatech/plainpad/blob/main/docker/nginx/nginx.conf -o /etc/nginx/conf.d/default.conf
 
-ENTRYPOINT ["bash", "php-fpm"]
+ENTRYPOINT ["bash", "/var/www/html/php-fpm"]
