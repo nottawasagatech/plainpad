@@ -26,10 +26,10 @@ RUN apt-get update \
     && echo "export PHP_IDE_CONFIG=\"serverName=host.docker.internal\"" >> /root/.bashrc \
     && apt-get -y autoremove \
     && apt-get clean \
+    && rm /etc/nginx/sites-enabled/default \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     && git clone https://github.com/nottawasagatech/plainpad.git \
     && mv -v plainpad/* . \
     && cp docker/php-fpm/php-ini-overrides.ini /usr/local/etc/php/conf.d/99-overrides.ini \
-    && rm /etc/nginx/sites-enabled/default \
     && cp docker/nginx/nginx.conf /etc/nginx/conf.d/default
 CMD ["bash", "docker/php-fpm/start-container"]
