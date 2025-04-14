@@ -10,3 +10,4 @@ echo "Listen To Incoming Requests"
 php-fpm
 
 echo "Starting NGINX"
+nginx
