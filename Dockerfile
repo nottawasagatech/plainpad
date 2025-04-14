@@ -28,7 +28,7 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
     && git clone https://github.com/nottawasagatech/plainpad.git \
-    && mv -v plainpad/* .
+    && mv -v plainpad/* . \
     && cp docker/php-fpm/php-ini-overrides.ini /usr/local/etc/php/conf.d/99-overrides.ini \
     && cp docker/nginx/nginx.conf /etc/nginx/conf.d/default.conf
 
