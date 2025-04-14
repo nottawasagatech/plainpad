@@ -30,6 +30,7 @@ RUN apt-get update \
     && git clone https://github.com/nottawasagatech/plainpad.git \
     && mv -v plainpad/* . \
     && cp docker/php-fpm/php-ini-overrides.ini /usr/local/etc/php/conf.d/99-overrides.ini \
-    && cp docker/nginx/nginx.conf /etc/nginx/sites-enabled/default
+    && cp docker/nginx/nginx.conf /etc/nginx/conf.d/default \
+    && rm /etc/nginx/sites-enabled/default
 
 CMD ["bash", "docker/php-fpm/start-container"]
